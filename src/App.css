@@ -13,6 +13,7 @@ body {
 .App {
   text-align: center;
   height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -90,6 +91,7 @@ body {
 .line-highlight {
   position: absolute;
   background-color: #0000FF77;
+  z-index: 10;
 }
 
 .line-highlight.ace_active-line {
