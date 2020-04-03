@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Sampler from './components/Sampler';
+import Sequencer from './components/Sequencer';
 
 function App() {
+  const [tempo, setTempo] = useState(120);
+  const [virtualKeys, setVirtualKeys] = useState([]);
+  const [tracks, updateTracks] = useState([{
+    type: "pitch",
+    code: "adsfa\nadfa"
+  }]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sampler tempo={tempo} virtualKeys={ virtualKeys }/>
+      <Sequencer tempo={tempo} onVirtualKeys={ setVirtualKeys }/>
     </div>
   );
 }
