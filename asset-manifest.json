@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/script-jam/static/css/main.3483cf93.chunk.css",
+    "main.js": "/script-jam/static/js/main.0cb84cc8.chunk.js",
+    "main.js.map": "/script-jam/static/js/main.0cb84cc8.chunk.js.map",
+    "runtime-main.js": "/script-jam/static/js/runtime-main.5dc943bf.js",
+    "runtime-main.js.map": "/script-jam/static/js/runtime-main.5dc943bf.js.map",
+    "static/js/2.3dc20e20.chunk.js": "/script-jam/static/js/2.3dc20e20.chunk.js",
+    "static/js/2.3dc20e20.chunk.js.map": "/script-jam/static/js/2.3dc20e20.chunk.js.map",
+    "index.html": "/script-jam/index.html",
+    "precache-manifest.572b59e247b4c763b70d7141524c0acc.js": "/script-jam/precache-manifest.572b59e247b4c763b70d7141524c0acc.js",
+    "service-worker.js": "/script-jam/service-worker.js",
+    "static/css/main.3483cf93.chunk.css.map": "/script-jam/static/css/main.3483cf93.chunk.css.map",
+    "static/js/2.3dc20e20.chunk.js.LICENSE.txt": "/script-jam/static/js/2.3dc20e20.chunk.js.LICENSE.txt",
+    "static/media/HIHAT1.wav": "/script-jam/static/media/HIHAT1.7cb09c75.wav",
+    "static/media/KICK1.wav": "/script-jam/static/media/KICK1.226fbf2c.wav",
+    "static/media/SNARE4.wav": "/script-jam/static/media/SNARE4.3efa79aa.wav",
+    "static/media/bass.wav": "/script-jam/static/media/bass.bc3432be.wav",
+    "static/media/jazz_sample_django.wav": "/script-jam/static/media/jazz_sample_django.900acd2d.wav",
+    "static/media/logo.svg": "/script-jam/static/media/logo.5d5d9eef.svg",
+    "static/media/synth2.ogg": "/script-jam/static/media/synth2.3fb56212.ogg",
+    "static/media/synth_note.ogg": "/script-jam/static/media/synth_note.3c1ccfc4.ogg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5dc943bf.js",
+    "static/js/2.3dc20e20.chunk.js",
+    "static/css/main.3483cf93.chunk.css",
+    "static/js/main.0cb84cc8.chunk.js"
+  ]
+}
