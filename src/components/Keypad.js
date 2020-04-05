@@ -9,10 +9,10 @@ export default function Keypad(props) {
             <Key
               key={ keyIndex }
               keyName={ key }
-              isPressed={ !!props.pressedKeys[key] }
-              isVirtuallyPressed={ !!props.virtualKeys.includes(key) }
-              onClickDown={ props.onUIClickDown.bind(null, key) }
-              onClickUp={ props.onUIClickUp.bind(null, key) }
+              isPressed={ !!props.userKeys[key] }
+              isVirtuallyPressed={ !!props.scriptKeys[key] }
+              onClickDown={ props.onKeyDown.bind(null, key) }
+              onClickUp={ props.onKeyUp.bind(null, key) }
             />
           ) }
         </div>

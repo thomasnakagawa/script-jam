@@ -10,6 +10,7 @@ import SoundPlayer from './components/SoundPlayer';
 import PlayerControls from './components/PlayerControls';
 
 import HeaderSection from './components/HeaderSection';
+import KeysSection from './components/KeysSection';
 import UserKeyDetector from './components/UserKeyDetector';
 import EditorSection from './components/EditorSection';
 
@@ -61,6 +62,7 @@ d  d
         onMarkerChange={ setMarker }
       />
       */}
+      <KeysSection/>
       <UserKeyDetector/>
       <EditorSection/>
 
