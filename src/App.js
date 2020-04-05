@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Sampler from './components/Sampler';
 import Sequencer from './components/Sequencer';
@@ -10,8 +9,8 @@ const playableKeys = ["z", "x", "c", "v", "a", "s", "d", "f", "q", "w", "e", "r"
 const playableKeys2 = ["b", "n", "m", ",", "g", "h", "j", "k", "t", "y", "u", "i", "5", "6", "7", "8"]
 
 function App() {
-  const [tempo, setTempo] = useState(120);
-  const [currentTrack, setCurrentTrack] = useState(0);
+  const [tempo] = useState(120);
+  const [currentTrack] = useState(0);
   const [virtualKeys, setVirtualKeys] = useState([]);
   const [userKey, setUserKey] = useState(null);
   const [markerConfig, setMarker] = useState({ line: 0, char: 0, show: false });

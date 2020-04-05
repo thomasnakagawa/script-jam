@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
-import DrumPad from './DrumPad';
+import React, { useEffect, useCallback } from 'react';
 import KickSound from '../sounds/KICK1.wav';
 import HatSound from '../sounds/HIHAT1.wav';
 import SnareSound from '../sounds/SNARE4.wav';
-import JazzSample from '../sounds/jazz_sample_django.wav';
-import BassSound from '../sounds/bass.wav';
 import SynthNote from '../sounds/synth_note.ogg';
 import SynthNote2 from '../sounds/synth2.ogg';
 import Pizzicato from 'pizzicato';
@@ -33,7 +30,6 @@ const pitches = [
   pitchForSemitone(11)
 ]
 
-var sampleLength = 0;
 let Bass = new Pizzicato.Sound(SynthNote, () => {});
 let Sy2 = new Pizzicato.Sound(SynthNote2, () => {});
 
@@ -48,7 +44,8 @@ export default function SoundPlayer(props) {
     sound.play();
     sound.sourceNode.playbackRate.value = pitch || 1;
   }
-  function handleKeyDown(key) {
+  
+  const handleKeyDown = useCallback(key => {
     if (!key || key === " ") return;
     //const keyIndex = key.charCodeAt(0);
     const keyIndex = indexOf(props.playableKeys, key);
@@ -71,19 +68,17 @@ export default function SoundPlayer(props) {
         playSound(Hat, 1 + Math.floor(keyCode / 30));
       }
     }
-  }
+  }, [props.playableKeys, props.playableKeys2]);
 
   useEffect(() => {
     props.virtualKeys.forEach(virtualKey => {
       handleKeyDown(virtualKey);
     });
-  }, [props.virtualKeys]);
+  }, [props.virtualKeys, handleKeyDown]);
   
   useEffect(() => {
     handleKeyDown(props.userKey)
-  }, [props.userKey]);
+  }, [props.userKey, handleKeyDown]);
 
-  return (
-    <></>
-  );
+  return <></>;
 }
