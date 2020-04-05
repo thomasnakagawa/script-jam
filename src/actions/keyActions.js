@@ -9,3 +9,7 @@ export const setScriptKeyPressed = (key, isPressed) => ({
   key,
   isPressed
 });
+
+export const clearPressedKeys = () => ({
+  type: "CLEAR_PRESSED_KEYS"
+});

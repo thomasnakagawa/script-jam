@@ -12,6 +12,7 @@ function KeysSection(props) {
   return (
     <div className="keys-section">
       <Keypad
+        keyClass="bass"
         keyRows={ reverse(chunk(bassKeys, 4)) }
         onKeyDown={ key => props.setUserKeyPressed(key, true) }
         onKeyUp={ key => props.setUserKeyPressed(key, false) }
@@ -19,6 +20,7 @@ function KeysSection(props) {
         scriptKeys={ props.scriptKeys }
       />
       <Keypad
+        keyClass="lead"
         keyRows={ reverse(chunk(leadKeys, 4)) }
         onKeyDown={ key => props.setUserKeyPressed(key, true) }
         onKeyUp={ key => props.setUserKeyPressed(key, false) }
@@ -26,6 +28,7 @@ function KeysSection(props) {
         scriptKeys={ props.scriptKeys }
       />
       <Keypad
+        keyClass="drum"
         keyRows={ reverse(chunk(drumKeys, 4)) }
         onKeyDown={ key => props.setUserKeyPressed(key, true) }
         onKeyUp={ key => props.setUserKeyPressed(key, false) }

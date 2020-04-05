@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PlaySound from '../AudioPlayer';
 
 import { editTrackCursor } from '../actions/trackActions';
-import { setScriptKeyPressed } from '../actions/keyActions';
+import { setScriptKeyPressed, clearPressedKeys } from '../actions/keyActions';
 import { setTrackPlayingLine } from '../actions/playbackActions';
 
 class PlaybackParser extends Component {
@@ -11,7 +11,8 @@ class PlaybackParser extends Component {
     super(props);
     this.state = {
       lineInterval: null,
-      charIntervals: []
+      charIntervals: [],
+      lastPressedKeys: []
     }
 
     this.HandlePlay = this.HandlePlay.bind(this);
@@ -30,9 +31,9 @@ class PlaybackParser extends Component {
   }
 
   HandlePlay() {
-
     this.setState({
       charIntervals: new Array(this.props.tracks.length),
+      lastPressedKeys: new Array(this.props.tracks.length),
       lineInterval: setInterval(this.HandleLine, (60000 / this.props.tempo))
     }, () => {
       this.HandleLine();
@@ -46,6 +47,7 @@ class PlaybackParser extends Component {
       charIntervals: [],
       lineInterval: null
     });
+    this.props.clearPressedKeys();
   }
 
   HandleLine() {
@@ -62,7 +64,7 @@ class PlaybackParser extends Component {
 
       // play the sound of the characters at interval
       if (currentLine && currentLine.length > 0) {
-        this.HandleChar(currentLine.charAt(0));
+        this.HandleChar(currentLine.charAt(0), trackIndex);
         this.props.setTrackCursor(trackIndex, true, currentLineIndex, 0);
 
         if (currentLine.length > 1) {
@@ -70,7 +72,7 @@ class PlaybackParser extends Component {
 
           let charIndex = 1
           charIntvCopy[trackIndex] = setInterval(() => {
-            this.HandleChar(currentLine.charAt(charIndex));
+            this.HandleChar(currentLine.charAt(charIndex), trackIndex);
             this.props.setTrackCursor(trackIndex, true, currentLineIndex, charIndex);
 
             charIndex += 1;
@@ -80,15 +82,21 @@ class PlaybackParser extends Component {
       }
 
       // setup for next line
-      console.log(currentLineIndex);
       const nextLine = (currentLineIndex + 1) % lineSplit.length;
       this.props.setTrackPlayingLine(trackIndex, nextLine);
     });
   }
 
-  HandleChar(key) {
+  HandleChar(key, trackIndex) {
+    if (this.state.lastPressedKeys[trackIndex]) {
+      this.props.setScriptKeyPressed(this.state.lastPressedKeys[trackIndex], false);
+    }
     this.props.setScriptKeyPressed(key, true);
     PlaySound(key);
+
+    const lastPressCopy = this.state.lastPressedKeys.slice();
+    lastPressCopy[trackIndex] = key
+    this.setState({ lastPressedKeys: lastPressCopy });
   }
 
   render() {
@@ -108,7 +116,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   setTrackPlayingLine: (index, line) => dispatch(setTrackPlayingLine(index, line)),
   setTrackCursor: (index, show, line, char) => dispatch(editTrackCursor(index, show, line, char)),
-  setScriptKeyPressed: (key, isPressed) => dispatch(setScriptKeyPressed(key, isPressed))
+  setScriptKeyPressed: (key, isPressed) => dispatch(setScriptKeyPressed(key, isPressed)),
+  clearPressedKeys: () => dispatch(clearPressedKeys())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackParser);

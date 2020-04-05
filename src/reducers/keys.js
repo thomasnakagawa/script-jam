@@ -16,6 +16,11 @@ export default (state={ userKeys: {}, scriptKeys: {} }, action) => {
           [action.key]: action.isPressed
         }
       };
+    case "CLEAR_PRESSED_KEYS":
+      return {
+        userKeys: {},
+        scriptKeys: {}
+      };
     default:
       return state;
   }

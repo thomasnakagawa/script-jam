@@ -19,18 +19,36 @@
   .drum-pad {
     width: 25%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-grow: 1;
     background-color: grey;
     border-radius: 1px;
-    margin: 5px;
+    margin: 2px;
   }
+
+    .drum-pad.bass {
+
+    }
+
+    .drum-pad.lead {
+        background-color: coral;
+    }
+
+    .drum-pad.drum {
+        background-color: aquamarine;
+    }
+
+    .drum-pad.spacer {
+        background-color: lightgrey;
+    }
   
   .drum-pad.pressed {
     background-color: red;
   }
   
   .drum-pad.virtual-pressed {
-    background-color: teal;
+    background-color: darkblue;
   }
   
   .drum-pad.pressed.virtual-pressed {

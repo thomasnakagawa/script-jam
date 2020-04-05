@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PlaySound from '../AudioPlayer';
 
 export default function Keypad(props) {
   return (
@@ -7,6 +8,7 @@ export default function Keypad(props) {
         <div key={ keyRow } className="row">
           { keyRow.map((key, keyIndex) => 
             <Key
+              keyClass={ props.keyClass }
               key={ keyIndex }
               keyName={ key }
               isPressed={ !!props.userKeys[key] }
@@ -27,6 +29,7 @@ function Key(props) {
   function handleMouseDown() {
     props.onClickDown();
     setPressed(true);
+    PlaySound(props.keyName);
   }
 
   function handleMouseUp() {
@@ -36,7 +39,7 @@ function Key(props) {
 
   return (
     <div
-      className={ "drum-pad" + (props.isPressed || isPressed ? " pressed" : "" ) + (props.isVirtuallyPressed ? " virtual-pressed" : "") }
+      className={ "drum-pad" + (props.isPressed || isPressed ? " pressed" : "" ) + (props.isVirtuallyPressed ? " virtual-pressed" : "") + " " + (props.keyName ? props.keyClass : "spacer") }
       onMouseDown={ handleMouseDown }
       onMouseUp={ handleMouseUp }
     >
