@@ -20,4 +20,9 @@ jobs:
         node-version: 12.x
     - run: npm ci
     - run: npm run build
-    - run: npm run deploy
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: build # The folder the action should deploy.
