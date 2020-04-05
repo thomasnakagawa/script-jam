@@ -14,11 +14,13 @@ function EditorSection(props) {
           (props.tracks || []).map((track, trackIndex) => (
             <TextEditor
               key={ trackIndex }
+              canClose={ props.tracks.length > 1 }
               onCloseButtonClicked={ () => props.removeTrack(trackIndex) }
               code={ track.code }
               onCodeChanged={ newCode => props.editTrackCode(trackIndex, newCode) }
               lineHighlight={ track.lineHighlight }
               charHighlight={ track.charHighlight }
+              showHighlight={ track.showHighlight }
             />
           ))
         }
@@ -28,7 +30,7 @@ function EditorSection(props) {
 }
 
 const mapStateToProps = state => ({
-  tracks: state.trackReducer
+  tracks: state.tracks
 });
 
 const mapDispatchToProps = dispatch => ({

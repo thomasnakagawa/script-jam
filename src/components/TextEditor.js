@@ -10,25 +10,21 @@ export default class TextEditor extends Component {
   }
 
   getMarkers() {
-    if (this.props.lineHighlight && this.props.charHighlight) {
-      return [{
-        startRow: this.props.lineHighlight,
-        endRow: this.props.lineHighlight,
-        startCol: this.props.charHighlight,
-        endCol: this.props.charHighlight + 1,
-        className: this.props.markerConfig.show ? 'line-highlight' : '',
-        type: 'background'
-      }];
-    } else {
-      return [];
-    }
+    return [{
+      startRow: this.props.lineHighlight,
+      endRow: this.props.lineHighlight,
+      startCol: this.props.charHighlight,
+      endCol: this.props.charHighlight + 1,
+      className: this.props.showHighlight ? 'line-highlight' : '',
+      type: 'background'
+    }];
   }
 
   render() {
     return (
       <div className="text-editor">
         <div className="text-editor-header">
-          <button onClick={ this.props.onCloseButtonClicked } disabled={ this.props.canClose } >x</button>
+          <button onClick={ this.props.onCloseButtonClicked } disabled={ !this.props.canClose } >x</button>
         </div>
         <AceEditor
           style={ { width: "100%", height: "100%" } }

@@ -13,9 +13,10 @@ export const editTrackCode = (index, newCode)=> ({
   newCode
 });
 
-export const editTrackCursor = (index, line, char)=> ({
+export const editTrackCursor = (index, show, line, char) => ({
   type: 'EDIT_TRACK_CURSOR',
   index,
   lineHighlight: line,
-  charHighlight: char
+  charHighlight: char,
+  showHighlight: show
 });

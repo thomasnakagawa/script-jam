@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startPlayback: () => dispatch({ type: "START_PLAYBACK" }),
+  startPlayback: () => dispatch(startPlayback()),
   stopPlayback: () => dispatch(stopPlayback())
 });
 

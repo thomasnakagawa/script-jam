@@ -55,16 +55,7 @@ export default class KeyboardDetector extends React.Component {
 
   render() {
     return (
-      <>
-        { React.Children.map(this.props.children, child =>
-          React.cloneElement(child, {
-            pressedKeys: this.state.pressedKeys,
-            virtualKeys: this.props.virtualKeys,
-            onUIClickDown: this.handleUIClickDown,
-            onUIClickUp: this.handleUIClickUp
-          })
-        ) }
-      </>
+      <></>
     );
   }
 }
