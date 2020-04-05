@@ -88,14 +88,3 @@ body {
 .drum-pad.pressed.virtual-pressed {
   background-color: purple;
 }
-
-
-.line-highlight {
-  position: absolute;
-  background-color: #0000FF77;
-  z-index: 10;
-}
-
-.line-highlight.ace_active-line {
-  background-color: red;
-}

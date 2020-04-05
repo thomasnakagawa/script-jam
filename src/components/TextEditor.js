@@ -6,17 +6,16 @@ import "ace-builds/src-noconflict/theme-github";
 export default class TextEditor extends Component {
   constructor(props) {
     super(props);
-
     this.getMarkers = this.getMarkers.bind(this);
   }
 
   getMarkers() {
-    if (this.props.markerConfig) {
+    if (this.props.lineHighlight && this.props.charHighlight) {
       return [{
-        startRow: this.props.markerConfig.line,
-        endRow: this.props.markerConfig.line,
-        startCol: this.props.markerConfig.char,
-        endCol: this.props.markerConfig.char + 1,
+        startRow: this.props.lineHighlight,
+        endRow: this.props.lineHighlight,
+        startCol: this.props.charHighlight,
+        endCol: this.props.charHighlight + 1,
         className: this.props.markerConfig.show ? 'line-highlight' : '',
         type: 'background'
       }];
@@ -36,7 +35,7 @@ export default class TextEditor extends Component {
           value={ this.props.code }
           mode="java"
           theme="github"
-          onChange={ this.props.onCodeChange }
+          onChange={ this.props.onCodeChanged }
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
           markers={ this.getMarkers() }
