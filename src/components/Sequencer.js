@@ -25,6 +25,7 @@ export default class Sequencer extends Component {
   render() {
     return (
       <AceEditor
+        style={ { width: "100%", flexGrow: "1" } }
         value={ this.props.code }
         mode="java"
         theme="github"

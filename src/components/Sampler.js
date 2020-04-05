@@ -11,7 +11,8 @@ export default function Sampler(props) {
         onKeyUp={ props.onKeyUp }
         virtualKeys={ props.virtualKeys }
       >
-        <Keypad keyRows={ reverse(chunk(props.playableKeys, 4)) } />
+        <Keypad keyRows={ reverse(chunk(props.playableKeys, 12)) } />
+        <Keypad keyRows={ reverse(chunk(props.playableKeys, 12)) } />
       </KeyboardDetector>
     </div>
   );

@@ -5,8 +5,9 @@ import Sequencer from './components/Sequencer';
 import SoundPlayer from './components/SoundPlayer';
 import PlayerControls from './components/PlayerControls';
 
-const playableKeys = ["z", "x", "c", "v", "a", "s", "d", "f", "q", "w", "e", "r", "1", "2", "3", "4"]
-const playableKeys2 = ["b", "n", "m", ",", "g", "h", "j", "k", "t", "y", "u", "i", "5", "6", "7", "8"]
+const bassKeys = ["z", "x", "c", "v", "a", "s", "d", "f", "q", "w", "e", "r", "1", "2", "3", "4"]
+const leadKeys = ["b", "n", "m", ",", "g", "h", "j", "k", "t", "y", "u", "i", "5", "6", "7", "8"]
+const drumKeys = ["b", "n", "m", ",", "g", "h", "j", "k", "t", "y", "u", "i", "5", "6", "7", "8"]
 
 function App() {
   const [tempo] = useState(120);
@@ -30,7 +31,7 @@ d  d
   return (
     <div className="App">
       <Sampler
-        playableKeys={ playableKeys }
+        playableKeys={ bassKeys }
         virtualKeys={ virtualKeys }
         onKeyDown={ key => {
           setUserKey(key);
@@ -58,8 +59,8 @@ d  d
       />
 
       <SoundPlayer
-        playableKeys={ playableKeys }
-        playableKeys2={ playableKeys2 }
+        playableKeys={ bassKeys }
+        playableKeys2={ leadKeys }
         userKey={ userKey }
         virtualKeys={ virtualKeys }
       />
